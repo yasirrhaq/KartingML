@@ -121,5 +121,4 @@ public class KartingAgent : Agent, IInput
         }
         Debug.DrawRay(ray.position, ray.forward * distance, Color.Lerp(Color.red, Color.green, obs), Time.deltaTime * debugRaycastTime);
     }
-
 }
