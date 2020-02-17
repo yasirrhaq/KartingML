@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using KartGame.KartSystems;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace KartGame.Track
 {
@@ -19,6 +20,13 @@ namespace KartGame.Track
         public List<Checkpoint> checkpoints = new List<Checkpoint> ();
         [Tooltip("Reference to an object responsible for repositioning karts.")]
         public KartRepositioner kartRepositioner;
+
+        [System.Serializable]
+        public class CheckpointEvent : UnityEvent<Checkpoint> {
+
+        }
+
+        public CheckpointEvent reachedCorrectCheckpoint;
 
         bool m_IsRaceRunning;
         Dictionary<IRacer, Checkpoint> m_RacerNextCheckpoints = new Dictionary<IRacer, Checkpoint> (16);
@@ -119,6 +127,12 @@ namespace KartGame.Track
                 m_RacerNextCheckpoints.Add (racer, checkpoints[0]);
                 racer.DisableControl ();
             }
+        }
+
+        public void RestartRace(){
+            m_RacerNextCheckpoints = new Dictionary<IRacer, Checkpoint>();
+            Start();
+            StartRace();
         }
 
         /// <summary>
