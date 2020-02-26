@@ -250,9 +250,7 @@ namespace MLAgents
             AgentSendState += () => { };
             AgentAct += () => { };
             AgentForceReset += () => { };
-
         }
-
         static void OnQuitCommandReceived()
         {
 #if UNITY_EDITOR

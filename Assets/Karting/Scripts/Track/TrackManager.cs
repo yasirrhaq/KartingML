@@ -197,6 +197,7 @@ namespace KartGame.Track
 
         void RacerHitCorrectCheckpoint (IRacer racer, Checkpoint checkpoint)
         {
+            this.reachedCorrectCheckpoint.Invoke(checkpoint);
             if (checkpoint.isStartFinishLine)
             {
                 int racerCurrentLap = racer.GetCurrentLap ();

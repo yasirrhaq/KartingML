@@ -86,7 +86,6 @@ public class KartingAgent : Agent, IInput
         _steering = vectorAction[1];
 
         AddReward(kartMovement.LocalSpeed * 0.001f);
-        Debug.Log(kartMovement.LocalSpeed);
     }
 
     public override void CollectObservations()
@@ -116,6 +115,7 @@ public class KartingAgent : Agent, IInput
 
         if (distance < 1f)
         {
+            // AddReward(-1.0f);
             this.Done();
             this.AgentReset();
         }
